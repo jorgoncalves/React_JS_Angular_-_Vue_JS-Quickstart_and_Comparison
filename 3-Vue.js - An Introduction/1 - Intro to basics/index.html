@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Intro to Vue.js</title>
+    <script src="https://unpkg.com/vue@2.6.6/dist/vue.js"></script>
+    <link rel="stylesheet" href="style.css">
+    
+</head>
+<body>
+    <div id="app">
+        <app-username 
+            :username="'Chris'"
+            @usrclicked="userWasClicked($event)">
+        </app-username>
+        <app-username 
+            :username="'Anna'">
+        </app-username>
+       <p 
+            v-bind:class="{updated: name != 'Jorge'}"> {{ name }} 
+        </p>
+       <p 
+            v-if="name != 'Jorge'">Name updated!
+        </p>
+       <button 
+            v-on:click="changeName">Change Name
+        </button>
+        <button 
+            v-on:click="addElement">New Element
+        </button>
+        <ul>
+            <li 
+                v-for="el in elements" 
+                v-bind:id="'element'+ el"
+                v-bind:style="{backgroundColor: getColor(el)}">A Element {{ el }}</li>
+        </ul>
+    </div>
+    <div id="app2">
+        <p>Second Vue Instance</p>
+        <input type="text"
+        v-model="message">
+        <p>
+            {{ message }}
+        </p>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
